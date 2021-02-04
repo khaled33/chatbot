@@ -130,6 +130,50 @@ function handlePostback(sender_psid, received_postback) {
 }
 
 // Sends response messages via the Send API
+function quick(sender_psid) {
+    // Construct the message body
+    let request_body = {
+    "recipient":{
+        "id":sender_psid
+    },
+    "messaging_type": "RESPONSE",
+        "message":{
+        "text": "Pick a color:",
+            "quick_replies":[
+            {
+                "content_type":"text",
+                "title":"Red",
+                "payload":"<POSTBACK_PAYLOAD>",
+            },{
+                "content_type":"text",
+                "title":"Green",
+                "payload":"<POSTBACK_PAYLOAD>",
+            }
+        ]
+    }
+}
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v7.0/me/messages",
+        "qs": { "access_token": process.env.FB_PAGE_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('message sent!');
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+// function firstTrait(nlp, name) {
+//     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
+// }
+
+function firstTrait(nlp, name) {
+    return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
+}
 function callSendAPI(sender_psid, response) {
     // Construct the message body
     let request_body = {
@@ -153,15 +197,6 @@ function callSendAPI(sender_psid, response) {
         }
     });
 }
-
-// function firstTrait(nlp, name) {
-//     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
-// }
-
-function firstTrait(nlp, name) {
-    return nlp && nlp.entities && nlp.traits[name] && nlp.traits[name][0];
-}
-
 function handleMessage(sender_psid, message) {
     //handle message for react, like press like button
     // id like button: sticker_id 369239263222822
@@ -185,6 +220,7 @@ function handleMessage(sender_psid, message) {
        if(message.text === "Comment vas-tu ?"){
            //send greetings message
            callSendAPI(sender_psid,'Très bien et vous ?');
+           quick(sender_psid);
        }
 
        // if(entityChosen === "thanks"){
@@ -206,22 +242,27 @@ let callSendAPIWithTemplate = (sender_psid) => {
             "id": sender_psid
         },
 
-        "message":{
-            "text": "Très bien et vous ?",
-            "quick_replies":[
-                {
-                    "content_type":"text",
-                    "title":"Je vais bien,\n" +
-                        "merci ",
-                    "payload":"<POSTBACK_PAYLOAD>",
-
-                },{
-                    "content_type":"text",
-                    "title":"Non, ça ne va pas",
-                    "payload":"<POSTBACK_PAYLOAD>",
-
+        "message": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [
+                        {
+                            "title": "Want to build sth awesome?",
+                            "image_url": "https://www.nexmo.com/wp-content/uploads/2018/10/build-bot-messages-api-768x384.png",
+                            "subtitle": "Watch more videos on my youtube channel ^^",
+                            "buttons": [
+                                {
+                                    "type": "web_url",
+                                    "url": "https://bit.ly/subscribe-haryphamdev",
+                                    "title": "Watch now"
+                                }
+                            ]
+                        }
+                    ]
                 }
-            ]
+            }
         }
     };
 
