@@ -186,10 +186,7 @@ function handleMessage(sender_psid, message) {
            //send greetings message
            callSendAPI(sender_psid,'Très bien et vous ?');
        }
-       if(message.text === ""){
-           //send greetings message
-           callSendAPI(sender_psid,'Très bien ');
-       }
+
        // if(entityChosen === "thanks"){
        //     //send thanks message
        //     callSendAPI(sender_psid,`You 're welcome!`);
@@ -208,27 +205,23 @@ let callSendAPIWithTemplate = (sender_psid) => {
         "recipient": {
             "id": sender_psid
         },
-        "message": {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [
-                        {
-                            "title": "Want to build sth awesome?",
-                            "image_url": "https://www.nexmo.com/wp-content/uploads/2018/10/build-bot-messages-api-768x384.png",
-                            "subtitle": "Watch more videos on my youtube channel ^^",
-                            "buttons": [
-                                {
-                                    "type": "web_url",
-                                    "url": "https://bit.ly/subscribe-haryphamdev",
-                                    "title": "Watch now"
-                                }
-                            ]
-                        }
-                    ]
+
+        "message":{
+            "text": "Très bien et vous ?",
+            "quick_replies":[
+                {
+                    "content_type":"text",
+                    "title":"Je vais bien,\n" +
+                        "merci ",
+                    "payload":"<POSTBACK_PAYLOAD>",
+
+                },{
+                    "content_type":"text",
+                    "title":"Non, ça ne va pas",
+                    "payload":"<POSTBACK_PAYLOAD>",
+
                 }
-            }
+            ]
         }
     };
 
