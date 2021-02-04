@@ -181,24 +181,20 @@ function handleMessage(sender_psid, message) {
         }
     });
 
-    if(entityChosen === ""){
-        //default
-        callSendAPI(sender_psid,`The bot is needed more training, try to say "thanks a lot" or "hi" to the bot` );
-        console.log(entityChosen);
-    }else{
-       if(entityChosen === "greetings"){
+
+       if(entityChosen === "Comment vas-tu ?"){
            //send greetings message
-           callSendAPI(sender_psid,'Hi there! This bot is created by Hary Pham. Watch more videos on HaryPhamDev Channel!');
+           callSendAPI(sender_psid,'Très bien et vous ?');
        }
-       if(entityChosen === "thanks"){
-           //send thanks message
-           callSendAPI(sender_psid,`You 're welcome!`);
-       }
-        if(entityChosen === "bye"){
-            //send bye message
-            callSendAPI(sender_psid,'bye-bye!');
-        }
-    }
+       // if(entityChosen === "thanks"){
+       //     //send thanks message
+       //     callSendAPI(sender_psid,`You 're welcome!`);
+       // }
+       //  if(entityChosen === "bye"){
+       //      //send bye message
+       //      callSendAPI(sender_psid,'bye-bye!');
+       //  }
+
 }
 
 let callSendAPIWithTemplate = (sender_psid) => {
