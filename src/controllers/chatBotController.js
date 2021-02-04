@@ -181,10 +181,10 @@ function handleMessage(sender_psid, message) {
         }
     });
 
-    if(entityChosen === ""){
-        //default
-        callSendAPI(sender_psid,`The bot is needed more training, try to say "thanks a lot" or "hi" to the bot` );
-    }else{
+    // if(entityChosen === ""){
+    //     //default
+    //     callSendAPI(sender_psid,`The bot is needed more training, try to say "thanks a lot" or "hi" to the bot` );
+    // }else{
        if(entityChosen === "wit$greetings"){
            //send greetings message
            callSendAPI(sender_psid,'Hi there! This bot is created by Hary Pham. Watch more videos on HaryPhamDev Channel!');
