@@ -138,7 +138,7 @@ function quick(sender_psid) {
     },
     "messaging_type": "RESPONSE",
         "message":{
-        "text": "",
+        "text": "Très bien et vous ? ",
             "quick_replies":[
             {
                 "content_type":"text",
@@ -219,7 +219,7 @@ function handleMessage(sender_psid, message) {
 
        if(message.text === "Comment vas-tu ?"){
            //send greetings message
-           callSendAPI(sender_psid,'Très bien et vous ?');
+           // callSendAPI(sender_psid,'Très bien et vous ?');
            quick(sender_psid);
        }
 
