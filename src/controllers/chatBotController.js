@@ -182,11 +182,11 @@ function handleMessage(sender_psid, message) {
     });
 
 
-       if(entityChosen === "Comment vas-tu ?"){
+       if(message.text === "Comment vas-tu ?"){
            //send greetings message
            callSendAPI(sender_psid,'Très bien et vous ?');
        }
-       if(entityChosen === ""){
+       if(message.text === ""){
            //send greetings message
            callSendAPI(sender_psid,'Très bien ');
        }
