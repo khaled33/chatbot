@@ -219,18 +219,13 @@ function handleMessage(sender_psid, message) {
 
        if(message.text === "Comment vas-tu ?"){
            //send greetings message
-           // callSendAPI(sender_psid,'Très bien et vous ?');
            quick(sender_psid);
+       }else {
+           callSendAPI(sender_psid,message.text);
+
        }
 
-       // if(entityChosen === "thanks"){
-       //     //send thanks message
-       //     callSendAPI(sender_psid,`You 're welcome!`);
-       // }
-       //  if(entityChosen === "bye"){
-       //      //send bye message
-       //      callSendAPI(sender_psid,'bye-bye!');
-       //  }
+
 
 }
 
