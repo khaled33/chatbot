@@ -197,7 +197,7 @@ function handleMessage(sender_psid, message) {
             //send bye message
             callSendAPI(sender_psid,'bye-bye!');
         }
-    }
+    
 }
 
 let callSendAPIWithTemplate = (sender_psid) => {
