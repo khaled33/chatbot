@@ -143,18 +143,18 @@ function quick(sender_psid) {
             {
                 "content_type":"text",
                 "title":"Red",
-                // "payload":"<POSTBACK_PAYLOAD>",
+                "payload":"<POSTBACK_PAYLOAD>",
             },{
                 "content_type":"text",
                 "title":"Green",
-                // "payload":"<POSTBACK_PAYLOAD>",
+                "payload":"<POSTBACK_PAYLOAD>",
             }
         ]
     }
 }
     // Send the HTTP request to the Messenger Platform
     request({
-        "uri": "https://graph.facebook.com/v7.0/me/messages",
+        "uri": "https://graph.facebook.com/v9.0/me/messages",
         "qs": { "access_token": process.env.FB_PAGE_TOKEN },
         "method": "POST",
         "json": request_body
