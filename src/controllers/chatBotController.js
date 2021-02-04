@@ -138,15 +138,15 @@ function quick(sender_psid) {
     },
     "messaging_type": "RESPONSE",
         "message":{
-        "text": "Pick a color:",
+        "text": "",
             "quick_replies":[
             {
                 "content_type":"text",
-                "title":"Red",
+                "title":" Je vais bien,merci",
                 "payload":"<POSTBACK_PAYLOAD>",
             },{
                 "content_type":"text",
-                "title":"Green",
+                "title":" Non, ça ne va pas",
                 "payload":"<POSTBACK_PAYLOAD>",
             }
         ]
