@@ -182,9 +182,13 @@ function handleMessage(sender_psid, message) {
     });
 
 
-       if(message === "Comment vas-tu ?"){
+       if(entityChosen === "Comment vas-tu ?"){
            //send greetings message
            callSendAPI(sender_psid,'Très bien et vous ?');
+       }
+       if(entityChosen === ""){
+           //send greetings message
+           callSendAPI(sender_psid,'Très bien ');
        }
        // if(entityChosen === "thanks"){
        //     //send thanks message
