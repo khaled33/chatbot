@@ -220,7 +220,8 @@ function handleMessage(sender_psid, message) {
        if(message.text === "Comment vas-tu ?"){
            //send greetings message
            quick(sender_psid);
-       }else {
+
+       }else if(message.text !== "Comment vas-tu ?"){
            callSendAPI(sender_psid,message.text);
 
        }
